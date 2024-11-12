@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding Invitation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Georgia:wght@400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        @keyframes fall {
+            0% { transform: translateY(-100px) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        @keyframes click {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(5px); }
+            100% { transform: translateY(0); }
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Georgia', serif;
+            background-color: #f7f3e9;
+            overflow-x: hidden;
+        }
+        .invitation-card {
+            width: 90%;
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            background-image: url('https://i.pinimg.com/736x/85/79/1c/85791c6e6263c824b82078d5d8bd4242.jpg');
+            background-size: cover;
+            background-position: center;
+            border: 2px solid #d4af37;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .invitation-card h1, .invitation-card h2 {
+            font-family: 'Dancing Script', cursive;
+            color: #8B0000;
+            animation: fadeIn 2s ease-in-out;
+        }
+        .flower {
+            position: fixed;
+            top: -100px;
+            width: 40px;
+            height: 40px;
+            background-size: cover;
+            animation: fall 0s linear infinite;
+            opacity: 0;
+        }
+        .flower:nth-child(1) { left: 5%; background-image: url('https://cdn-icons-png.flaticon.com/256/6639/6639752.png'); animation-duration: 12s; animation-delay: 1s; }
+        .flower:nth-child(2) { left: 15%; background-image: url('https://cdn-icons-png.flaticon.com/256/6376/6376215.png'); animation-duration: 10s; animation-delay: 2s; }
+        /* Other flower styles omitted for brevity */
+        
+        .invitation-details a {
+            text-decoration: none;
+            color: #8B0000;
+            font-weight: bold;
+            position: relative;
+            padding-left: 25px;
+        }
+        .invitation-details a:hover {
+            color: #DDA0DD;
+        }
+        #address-icon {
+            font-size: 1.2em;
+            color: #8B0000;
+            margin-right: -20px;
+            animation: blink 1.5s infinite; /* Blink effect to show it's clickable */
+            cursor: pointer;
+        }
+        .finger-emoji {
+            position: absolute;
+            left: 10%;
+            top: -25px;
+            font-size: 2em;
+            transition: transform 0.3s;
+        }
+        @media (max-width: 590px) {
+            .invitation-card { padding: 15px; width: 90%; }
+            .invitation-card img { width: 150px; }
+            .invitation-details p { font-size: 14px; }
+            .qr-code img { width: 120px; }
+        }
+    </style>
+</head>
+<body>
+  <audio autoplay loop>
+        <source src="music/background-music.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <div class="flower"></div>
+    <div class="flower"></div>
+    <div class="flower"></div>
+
+    <div class="invitation-card">
+        <h1>Wedding Invitation</h1>
+        <h2>Ganesh & Deekshitha</h2>
+        <p>We cordially invite you to celebrate our wedding</p>
+        
+        <div class="couple-image">
+            <img src="https://i.pinimg.com/564x/d2/84/4d/d2844dfa48ca8ff966d19fb19a39a8c2.jpg" alt="Traditional Couple Image" style="width: 200px; border-radius: 50%;">
+        </div>
+
+        <div class="invitation-details">
+            <p>Reception Date: 16th Reception</p>
+            <p>Time: 7 PM onwards</p>
+            <p>Wedding Date: 17th Marriage Muhurtham</p>
+            <p>Time: 7:15 AM to 8:15 AM</p>
+            <p>
+                <i class="fas fa-map-marker-alt" id="address-icon"></i>
+                <a href="https://maps.app.goo.gl/SkwUE8f27JJTd9bY9" target="_blank" id="address-link">Susheel Kalyana Mantapam, Punganuru</a>
+               
+            </p>
+        </div>
+        <br><br><br><br>
+
+        <div class="footer">
+            <p>We look forward to celebrating this special day with you!</p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("address-link").addEventListener("click", function(event) {
+            event.preventDefault();
+            const icon = document.getElementById("address-icon");
+            const fingerEmoji = document.getElementById("finger-emoji");
+
+            icon.style.animation = 'blink 1s ease forwards';
+            fingerEmoji.style.transform = 'translateY(5px)';
+
+            setTimeout(() => {
+                fingerEmoji.style.transform = '';
+            }, 300);
+
+            setTimeout(() => {
+                window.open(this.href);
+            }, 1000);
+        });
+    </script>
+
+</body>
+</html>
