@@ -128,24 +128,18 @@
         </div>
     </div>
 
-    <script>
-        document.getElementById("address-link").addEventListener("click", function(event) {
-            event.preventDefault();
-            const icon = document.getElementById("address-icon");
-            const fingerEmoji = document.getElementById("finger-emoji");
+   <script>
+    document.getElementById("address-link").addEventListener("click", function() {
+        const icon = document.getElementById("address-icon");
+        icon.style.animation = 'blink 1s ease forwards';
 
-            icon.style.animation = 'blink 1s ease forwards';
-            fingerEmoji.style.transform = 'translateY(5px)';
+        // Small delay for the animation effect, then open the link
+        setTimeout(() => {
+            window.open(this.href, '_blank');
+        }, 500);  // Adjust the delay if needed
+    });
+</script>
 
-            setTimeout(() => {
-                fingerEmoji.style.transform = '';
-            }, 300);
-
-            setTimeout(() => {
-                window.open(this.href);
-            }, 1000);
-        });
-    </script>
 
 </body>
 </html>
