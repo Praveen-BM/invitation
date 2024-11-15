@@ -15,11 +15,6 @@
             0%, 100% { opacity: 1; }
             50% { opacity: 0; }
         }
-        @keyframes click {
-            0% { transform: translateY(0); }
-            50% { transform: translateY(5px); }
-            100% { transform: translateY(0); }
-        }
         body {
             margin: 0;
             padding: 0;
@@ -44,7 +39,6 @@
         .invitation-card h1, .invitation-card h2 {
             font-family: 'Dancing Script', cursive;
             color: #8B0000;
-            animation: fadeIn 2s ease-in-out;
         }
         .flower {
             position: fixed;
@@ -52,13 +46,18 @@
             width: 40px;
             height: 40px;
             background-size: cover;
-            animation: fall 0s linear infinite;
-            opacity: 0;
+            animation: fall linear infinite;
         }
-        .flower:nth-child(1) { left: 5%; background-image: url('https://cdn-icons-png.flaticon.com/256/6639/6639752.png'); animation-duration: 12s; animation-delay: 1s; }
-        .flower:nth-child(2) { left: 15%; background-image: url('https://cdn-icons-png.flaticon.com/256/6376/6376215.png'); animation-duration: 10s; animation-delay: 2s; }
-        /* Other flower styles omitted for brevity */
-        
+        .flower:nth-child(1) { left: 5%; background-image: url('https://cdn-icons-png.flaticon.com/256/6639/6639752.png'); animation-duration: 10s; animation-delay: 1s; }
+        .flower:nth-child(2) { left: 15%; background-image: url('https://cdn-icons-png.flaticon.com/256/6376/6376215.png'); animation-duration: 12s; animation-delay: 2s; }
+        .flower:nth-child(3) { left: 25%; background-image: url('https://cdn-icons-png.flaticon.com/256/6639/6639752.png'); animation-duration: 8s; animation-delay: 3s; }
+        .flower:nth-child(4) { left: 35%; background-image: url('https://cdn-icons-png.flaticon.com/256/6376/6376215.png'); animation-duration: 14s; animation-delay: 4s; }
+        .flower:nth-child(5) { left: 45%; background-image: url('https://cdn-icons-png.flaticon.com/256/6639/6639752.png'); animation-duration: 9s; animation-delay: 5s; }
+        .flower:nth-child(6) { left: 55%; background-image: url('https://cdn-icons-png.flaticon.com/256/6376/6376215.png'); animation-duration: 13s; animation-delay: 6s; }
+        .flower:nth-child(7) { left: 65%; background-image: url('https://cdn-icons-png.flaticon.com/256/6639/6639752.png'); animation-duration: 11s; animation-delay: 7s; }
+        .flower:nth-child(8) { left: 75%; background-image: url('https://cdn-icons-png.flaticon.com/256/6376/6376215.png'); animation-duration: 15s; animation-delay: 8s; }
+        .flower:nth-child(9) { left: 85%; background-image: url('https://cdn-icons-png.flaticon.com/256/6639/6639752.png'); animation-duration: 10s; animation-delay: 9s; }
+
         .invitation-details a {
             text-decoration: none;
             color: #8B0000;
@@ -70,10 +69,10 @@
             color: #DDA0DD;
         }
         #address-icon {
-            font-size: 1.2em;
+            font-size: 2em;
             color: #8B0000;
             margin-right: -20px;
-            animation: blink 1.5s infinite; /* Blink effect to show it's clickable */
+            animation: blink 0.5s infinite;
             cursor: pointer;
         }
         .finger-emoji {
@@ -87,7 +86,6 @@
             .invitation-card { padding: 15px; width: 90%; }
             .invitation-card img { width: 150px; }
             .invitation-details p { font-size: 14px; }
-            .qr-code img { width: 120px; }
         }
     </style>
 </head>
@@ -97,6 +95,12 @@
         Your browser does not support the audio element.
     </audio>
 
+    <div class="flower"></div>
+    <div class="flower"></div>
+    <div class="flower"></div>
+    <div class="flower"></div>
+    <div class="flower"></div>
+    <div class="flower"></div>
     <div class="flower"></div>
     <div class="flower"></div>
     <div class="flower"></div>
@@ -111,14 +115,13 @@
         </div>
 
         <div class="invitation-details">
-            <p>Reception Date: 16th Reception</p>
+            <p>Reception : 16th Reception</p>
             <p>Time: 7 PM onwards</p>
-            <p>Wedding Date: 17th Marriage Muhurtham</p>
+            <p>Wedding : 17th Marriage Muhurtham</p>
             <p>Time: 7:15 AM to 8:15 AM</p>
             <p>
                 <i class="fas fa-map-marker-alt" id="address-icon"></i>
-                <a href="https://maps.app.goo.gl/SkwUE8f27JJTd9bY9" target="_blank" id="address-link">Susheel Kalyana Mantapam, Punganuru</a>
-               
+                <a href="https://maps.app.goo.gl/SkwUE8f27JJTd9bY9" target="_blank" id="address-link"><h3>Susheel Kalyana Mantapam, Punganuru</h3></a>
             </p>
         </div>
         <br><br><br><br>
@@ -132,14 +135,10 @@
     document.getElementById("address-link").addEventListener("click", function() {
         const icon = document.getElementById("address-icon");
         icon.style.animation = 'blink 1s ease forwards';
-
-        // Small delay for the animation effect, then open the link
         setTimeout(() => {
             window.open(this.href, '_blank');
-        }, 500);  // Adjust the delay if needed
+        }, 500); 
     });
 </script>
-
-
 </body>
 </html>
